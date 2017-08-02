@@ -5,6 +5,7 @@ Version: 0.1.0
 Author: Chris Friedman
 Maintainer: Chris Friedman <chris.s.friedman@gmail.com>
 Description: Contained are a series of functions that I find useful and that I reuse in my work.
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
