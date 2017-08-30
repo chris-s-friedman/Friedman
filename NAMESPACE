@@ -2,5 +2,7 @@
 
 export(InitializeR)
 export(fuzzy_matcher)
+export(runnR)
+import(progress)
 import(reshape2)
 import(stringdist)
