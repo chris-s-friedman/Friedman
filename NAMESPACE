@@ -2,7 +2,11 @@
 
 export(InitializeR)
 export(fuzzy_matcher)
+export(has_all_items)
 export(runnR)
+import(dplyr)
 import(progress)
+import(purrr)
 import(reshape2)
 import(stringdist)
+import(tidyr)

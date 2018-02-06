@@ -1,7 +1,7 @@
 Package: Friedman
 Type: Package
 Title: Functions Just For Me
-Version: 0.2.0
+Version: 0.3.0
 Author: Chris Friedman
 Maintainer: Chris Friedman <chris.s.friedman@gmail.com>
 Description: Contained are a series of functions that I find useful and that I reuse in my work.
