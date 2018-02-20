@@ -2,6 +2,7 @@
 
 export(InitializeR)
 export(fuzzy_matcher)
+export(graph_from_adv_data)
 export(has_all_items)
 export(runnR)
 import(dplyr)
@@ -10,3 +11,4 @@ import(purrr)
 import(reshape2)
 import(stringdist)
 import(tidyr)
+importFrom(igraph,graph_from_data_frame)
