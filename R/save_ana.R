@@ -8,7 +8,7 @@
 #'
 #' @importFrom glue glue
 #' @importFrom readr write_csv
-#' @importFrom haven write_sav wrote_sas write_dta
+#' @importFrom haven write_sav write_sas write_dta
 #'
 #' @return NULL invisibly
 #' @export
