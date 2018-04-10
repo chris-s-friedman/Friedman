@@ -4,13 +4,15 @@
 \alias{save_ana}
 \title{Save Analytical Data}
 \usage{
-save_ana(x, file_name)
+save_ana(x, file_name, file_types = c("csv", "spss", "sas", "stata", "r"))
 }
 \arguments{
 \item{x}{data frame, tibble, some data}
 
 \item{file_name}{location to save to (including the file name). Do not
 include the file extension. That is handled internally.}
+
+\item{file_types}{what file types should be output?}
 }
 \value{
 NULL invisibly
