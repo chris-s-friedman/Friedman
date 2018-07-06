@@ -1,6 +1,6 @@
 # functions for adv_table data
 
-adv_table <- function(attributes, edges, directed = TRUE) {
+adv_tbl <- function(attributes, edges, directed = TRUE) {
   if(!"adv_tbl_attr" %in% class(attributes)) {
     stop("coerce attributes to adv_tbl_attr with as_adv_attr()")
   }
