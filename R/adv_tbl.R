@@ -1,24 +1,5 @@
-#' Make Advanced Tables
-#'
-#' Advanced Tables are a "long" way to look at network data where every node has
-#' columns about their attributes. Additionally, all of the nodes and attributes
-#' carry their own meta-data. This is a form that is made to make simple import
-#' into ORA.
-#'
-#' @name adv_tbl
-#' @aliases is_adv_tbl
-#'
-#' @param attributes A data frame with the atributes ceated by \code{\link{as_adv_attr()}}
-#' @param edges A data frame with the edges ceated by \code{\link{as_adv_edge()}}
-#' @param directed Logical scalar - is the data directed (currently unused)
-#'
-#' @return an advanced table
-#' @export
-#'
-#' @examples
-#'
-#' @importFrom tidyr gather spread
-#' @import dplyr
+# functions for adv_table data
+
 adv_tbl <- function(attributes, edges, directed = TRUE) {
   if(!"adv_tbl_attr" %in% class(attributes)) {
     stop("coerce attributes to adv_tbl_attr with as_adv_attr()")
@@ -46,10 +27,7 @@ adv_tbl <- function(attributes, edges, directed = TRUE) {
            everything())
 }
 
-#' @rdname is_adv_tbl
-#' @export
-#' @param x An object to test for class "adv_tbl"
-is_adv_tbl <- function(x) {
+is_adv_table <- function(x) {
   "adv_tbl" %in% class(x)
 }
 

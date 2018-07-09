@@ -1,61 +1,23 @@
-#' Coerce object to adv_tbl
-#'
-#' @name as_adv_tbl
-#'
-#' @param x object to coerce to advanced table
-#' @param ... aditional arguments to pass on to methods
-#'
-#' @return
-#' @export
-#'
-#' @examples
+
 as_adv_tbl <- function(x, ...) {
   UseMethod("as_adv_table")
 }
 
-#' @export
-#' @rdname as_adv_tbl
-as_adv_tbl.igraph <- function(x) {
-  x %>%
-    as_long_data_frame() %>%
-    rename_all(funs(stringr::str_replace(., "^from", "source") %>%
-                      stringr::str_replace(., "^to", "target")))
-}
+# Methods:
+## igraph
+## edge list
+## edge list and a node list
+## data frame
 
-#' @export
-#' @rdname as_adv_tbl
 as_adv_tbl.default <- function(x) {
   message("Chris, you need to work more on this package.")
   x
 }
 
-#' Coerce objet to an advanced edge list
-#'
-#' Advanced edge lists only contain information about the edges and include:
-#' \itemize{
-#'   \item source_nodeset_class
-#'   \item source_nodeset_name
-#'   \item sourcce_node_name
-#'   \item target_nodeset_class
-#'   \item target_nodeset_name
-#'   \item target_node_name
-#'   \item link_value
-#'   \item network_name
-#' }
-#'
-#' @param x object to coerce to advanced edge list
-#' @param ... aditional arguments to pass on to methods
-#'
-#' @return
-#' @export
-#'
-#' @examples
 as_adv_edge <- function(x, ...) {
   UseMethod("as_adv_edge")
 }
 
-#' @export
-#' @rdname as_adv_edge
 as_adv_edge.adv_tbl <- function(x) {
   x %>%
     select(-contains("source"), -contains("target"),
@@ -64,11 +26,6 @@ as_adv_edge.adv_tbl <- function(x) {
     set_adv_tbl_edge_class()
 }
 
-#' @param source_node_name column with the source node name
-#' @param target_node_name column with the target node name
-#'
-#' @export
-#' @rdname as_adv_edge
 as_adv_edge.data.frame <- function(x, source_node_name, target_node_name) {
   # check for missing args
   missing_arg_handler()
@@ -80,32 +37,9 @@ as_adv_edge.data.frame <- function(x, source_node_name, target_node_name) {
            target_node_name = !!target_node_name) %>%
     set_adv_tbl_edge_class()
 }
-#' Coerce objet to an advanced attribute list
-#'
-#' Advanced attribute lists only contain information about the nodes and
-#' include:
-#' \itemize{
-#'   \item nodeset_class
-#'   \item nodeset_name
-#'   \item node_name
-#'   }
-#' Additionally, there are three columns for every attribute - a column with the
-#' name of the attribute, a column with the type that the attribute is, and a
-#' column with the attribute value
-#'
-#' @param x object to coerce to advanced edge list
-#' @param ... aditional arguments to pass on to methods
-#'
-#' @return
-#' @export
-#'
-#' @examples
 as_adv_attr <- function(x, ...) {
   UseMethod("as_adv_attr")
 }
-
-#' @export
-#' @rdname as_adv_attr
 as_adv_attr.adv_tbl <- function(x) {
   source_attr <- x %>%
     select(contains("source")) %>%
@@ -137,13 +71,6 @@ as_adv_attr.adv_tbl <- function(x) {
     distinct() %>%
     set_adv_tbl_attr_class()
 }
-
-#' @param nodeset_class column with the nodeset class
-#' @param nodeset_name column with the nodeset name
-#' @param node_name column with the node names
-#'
-#' @export
-#' @rdname as_adv_attr
 as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name) {
   # check for missing args
   missing_arg_handler()
