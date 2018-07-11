@@ -109,7 +109,7 @@ as_adv_attr <- function(x, ...) {
 as_adv_attr.adv_tbl <- function(x) {
   source_attr <- x %>%
     select(contains("source")) %>%
-    gather(key, value,
+    gather(key = "key", value = "value",
            -source_node_name, -source_nodeset_class, -source_nodeset_name) %>%
     mutate(key = stringr::str_remove(key, "^source_")) %>%
     separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
@@ -122,7 +122,7 @@ as_adv_attr.adv_tbl <- function(x) {
            attr_name, attr_type = type, attr_value = value)
   target_attr <- x %>%
     select(contains("target")) %>%
-    gather(key, value,
+    gather(key = "key", value = "value",
            -target_node_name, -target_nodeset_class, -target_nodeset_name) %>%
     mutate(key = stringr::str_remove(key, "^target_")) %>%
     separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
