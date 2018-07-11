@@ -2,12 +2,12 @@
 % Please edit documentation in R/adv_tbl_graph_from_adv_tbl.R
 \name{graph_from_adv_tbl}
 \alias{graph_from_adv_tbl}
-\title{Convert adv_tbl in an igraph object}
+\title{Convert adv_data in an igraph object}
 \usage{
-graph_from_adv_tbl(adv_tbl)
+graph_from_adv_tbl(adv_data)
 }
 \arguments{
-\item{adv_tbl}{adv_tbl data created by \code{\link{adv_tbl()}}}
+\item{adv_data}{adv_tbl data created by \code{\link{adv_tbl()}}}
 }
 \value{
 an igraph graph object
@@ -16,7 +16,7 @@ an igraph graph object
 Converts advanced format network data (a la ORA) into an igraph object
 }
 \examples{
-graph_from_adv_tbl(adv_tbl)
+graph_from_adv_tbl(adv_data)
 
 }
 \seealso{
