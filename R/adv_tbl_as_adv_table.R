@@ -107,32 +107,49 @@ as_adv_attr <- function(x, ...) {
 #' @export
 #' @rdname as_adv_attr
 as_adv_attr.adv_tbl <- function(x) {
-  source_attr <- x %>%
+  source_attr <-
+    x %>%
     select(contains("source")) %>%
     gather(key = "key", value = "value",
-           -source_node_name, -source_nodeset_class, -source_nodeset_name) %>%
-    mutate(key = stringr::str_remove(key, "^source_")) %>%
-    separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
-    distinct() %>%
-    filter(col != "name") %>%
-    spread(col, value) %>%
+           -source_node_name, -source_nodeset_class, -source_nodeset_name)
+  if("key" %in% colnames(source_attr)) {
+    source_attr <-
+      source_attr %>%
+      mutate(key = stringr::str_remove(key, "^source_")) %>%
+      separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
+      filter(col !="name") %>%
+      spread(col, value) %>%
+      rename(attr_type = type, attr_value = value)
+  }
+  source_attr <-
+    source_attr %>%
     select(nodeset_class = source_nodeset_class,
            nodeset_name = source_nodeset_name,
            node_name = source_node_name,
-           attr_name, attr_type = type, attr_value = value)
+           starts_with("attr")) %>%
+    distinct()
+
   target_attr <- x %>%
     select(contains("target")) %>%
     gather(key = "key", value = "value",
-           -target_node_name, -target_nodeset_class, -target_nodeset_name) %>%
-    mutate(key = stringr::str_remove(key, "^target_")) %>%
-    separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
-    distinct() %>%
-    filter(col != "name") %>%
-    spread(col, value) %>%
+           -target_node_name, -target_nodeset_class, -target_nodeset_name)
+  if("key" %in% colnames(target_attr)) {
+    target_attr <-
+      target_attr %>%
+      mutate(key = stringr::str_remove(key, "^target_")) %>%
+      separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
+      filter(col !="name") %>%
+      spread(col, value) %>%
+      rename(attr_type = type, attr_value = value)
+  }
+  target_attr <-
+    target_attr %>%
     select(nodeset_class = target_nodeset_class,
            nodeset_name = target_nodeset_name,
            node_name = target_node_name,
-           attr_name, attr_type = type, attr_value = value)
+           starts_with("attr")) %>%
+    distinct()
+
   bind_rows(source_attr, target_attr) %>%
     distinct() %>%
     set_adv_tbl_attr_class()
