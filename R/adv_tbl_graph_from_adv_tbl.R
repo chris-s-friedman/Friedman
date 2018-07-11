@@ -24,9 +24,15 @@ graph_from_adv_tbl <- function(adv_data){
   # create the edge list
   adv_edge <- as_adv_edge(adv_data)
   # create the vertex list
-    select(-attr_type) %>%
-    spread(attr_name, attr_value) %>%
   adv_vert <- as_adv_attr(adv_data)
+  if("attr_name" %in% colnames(adv_vert)) {
+    adv_vert <-
+      adv_vert %>%
+      select(-attr_type) %>%
+      spread(attr_name, attr_value)
+  }
+  adv_vert <-
+    adv_vert %>%
     select(node_name, everything())
   # make the igraph object
   graph_from_data_frame(d = adv_edge,
