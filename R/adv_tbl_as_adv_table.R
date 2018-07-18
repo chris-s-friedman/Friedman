@@ -168,20 +168,21 @@ as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name) {
   nodeset_class <- enquo(nodeset_class)
   nodeset_name <- enquo(nodeset_name)
   node_name <- enquo(node_name)
+  group_col <- enquo(group_col)
+  group_col_name <- quo_name(group_col)
 
-  x <-
-    x %>% rename(nodeset_class = !!nodeset_class,
-                 nodeset_name = !!nodeset_name,
-                 node_name = !!node_name)
-
+  x <- x %>%
+    rename(nodeset_class = !!nodeset_class,
+           nodeset_name = !!nodeset_name,
+           node_name = !!node_name)
   attr_types <-
     x %>%
     summarise_all(class) %>%
     tidyr::gather(attr_name, attr_type)
-
   x %>%
     tidyr::gather(key = attr_name, value = attr_value,
-                  -nodeset_class, -nodeset_name, -node_name) %>%
+                  -nodeset_class, -nodeset_name, -node_name,
+                  -group_col_name) %>%
     left_join(attr_types, by = "attr_name") %>%
     select(nodeset_class, nodeset_name, node_name,
            attr_name, attr_type, attr_value) %>%
