@@ -161,7 +161,8 @@ as_adv_attr.adv_tbl <- function(x) {
 #'
 #' @export
 #' @rdname as_adv_attr
-as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name) {
+as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name,
+                                   group_col) {
   # check for missing args
   missing_arg_handler()
 
