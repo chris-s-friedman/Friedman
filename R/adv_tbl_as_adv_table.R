@@ -158,6 +158,7 @@ as_adv_attr.adv_tbl <- function(x) {
 #' @param nodeset_class column with the nodeset class
 #' @param nodeset_name column with the nodeset name
 #' @param node_name column with the node names
+#' @param group_col column that denotes grouping. Currently only 1 group is supported.
 #'
 #' @export
 #' @rdname as_adv_attr
@@ -185,7 +186,7 @@ as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name,
                   -nodeset_class, -nodeset_name, -node_name,
                   -group_col_name) %>%
     left_join(attr_types, by = "attr_name") %>%
-    select(nodeset_class, nodeset_name, node_name,
+    select(group_col_name, nodeset_class, nodeset_name, node_name,
            attr_name, attr_type, attr_value) %>%
     set_adv_tbl_attr_class()
 }
