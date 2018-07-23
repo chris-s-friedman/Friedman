@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-graph_from_adv_tbl <- function(adv_data){
+graph_from_adv_tbl <- function(adv_data, directed = TRUE){
   if(!"adv_tbl" %in% class(adv_data)) {
     stop("Input is not an adv_data")
   }
@@ -36,6 +36,6 @@ graph_from_adv_tbl <- function(adv_data){
     select(node_name, everything())
   # make the igraph object
   graph_from_data_frame(d = adv_edge,
-                        directed = TRUE,
+                        directed = directed,
                         vertices = adv_vert)
 }
