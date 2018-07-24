@@ -11,6 +11,7 @@
 #' @param attributes A data frame with the atributes ceated by \code{\link{as_adv_attr()}}
 #' @param edges A data frame with the edges ceated by \code{\link{as_adv_edge()}}
 #' @param directed Logical scalar - is the data directed (currently unused)
+#' @param group_col column to group the data by
 #'
 #' @return an advanced table
 #' @export
@@ -19,7 +20,9 @@
 #'
 #' @importFrom tidyr gather spread
 #' @import dplyr
-adv_tbl <- function(attributes, edges, directed = TRUE) {
+adv_tbl <- function(attributes, edges, directed = TRUE, group_col = NULL) {
+  group_col <- enquo(group_col)
+  group_col_name <- quo_name(group_col)
   if(!"adv_tbl_attr" %in% class(attributes)) {
     stop("coerce attributes to adv_tbl_attr with as_adv_attr()")
   }
@@ -33,13 +36,13 @@ adv_tbl <- function(attributes, edges, directed = TRUE) {
     spread(colname, value)
   source_attr <-
     attributes %>%
-    rename_all(funs(paste0("source_", .)))
+    rename_at(vars(-group_col_name), funs(paste0("source_", .)))
   targ_attr <-
     attributes %>%
-    rename_all(funs(paste0("target_", .)))
+    rename_at(vars(-group_col_name), funs(paste0("target_", .)))
   edges %>%
-    left_join(source_attr, by = "source_node_name") %>%
-    left_join(targ_attr, by = "target_node_name") %>%
+    left_join(source_attr, by = c("source_node_name", group_col_name)) %>%
+    left_join(targ_attr, by = c("target_node_name", group_col_name)) %>%
     set_adv_tbl_class() %>%
     select(source_nodeset_class, source_nodeset_name, source_node_name,
            target_nodeset_class, target_nodeset_name, target_node_name,
