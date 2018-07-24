@@ -17,14 +17,14 @@
 #'
 #' @export
 #'
-graph_from_adv_tbl <- function(adv_data, directed = TRUE){
+graph_from_adv_tbl <- function(adv_data, directed = TRUE, ...){
   if(!"adv_tbl" %in% class(adv_data)) {
     stop("Input is not an adv_data")
   }
   # create the edge list
   adv_edge <- as_adv_edge(adv_data)
   # create the vertex list
-  adv_vert <- as_adv_attr(adv_data)
+  adv_vert <- as_adv_attr(adv_data, ...)
   if("attr_name" %in% colnames(adv_vert)) {
     adv_vert <-
       adv_vert %>%
