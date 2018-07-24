@@ -31,7 +31,7 @@ adv_tbl <- function(attributes, edges, directed = TRUE, group_col = NULL) {
   }
   attributes <- attributes %>%
     mutate(col_name_safe = attr_name) %>%
-    gather(variable, value, attr_type, contains("attrs")) %>%
+    gather(variable, value, attr_type, contains("attr")) %>%
     unite(colname, col_name_safe, variable) %>%
     spread(colname, value)
   source_attr <-
