@@ -106,11 +106,13 @@ as_adv_attr <- function(x, ...) {
 
 #' @export
 #' @rdname as_adv_attr
-as_adv_attr.adv_tbl <- function(x) {
+as_adv_attr.adv_tbl <- function(x, group_col = NULL) {
+  group_col <- enquo(group_col)
+  group_col_name <- quo_name(group_col)
   source_attr <-
     x %>%
-    select(contains("source")) %>%
-    gather(key = "key", value = "value",
+    select(contains("source"), !!group_col) %>%
+    gather(key = "key", value = "value", -group_col_name,
            -source_node_name, -source_nodeset_class, -source_nodeset_name)
   if("key" %in% colnames(source_attr)) {
     source_attr <-
@@ -118,6 +120,7 @@ as_adv_attr.adv_tbl <- function(x) {
       mutate(key = stringr::str_remove(key, "^source_")) %>%
       separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
       filter(col !="name") %>%
+      distinct() %>%
       spread(col, value) %>%
       rename(attr_type = type, attr_value = value)
   }
@@ -126,12 +129,13 @@ as_adv_attr.adv_tbl <- function(x) {
     select(nodeset_class = source_nodeset_class,
            nodeset_name = source_nodeset_name,
            node_name = source_node_name,
+           !!group_col,
            starts_with("attr")) %>%
     distinct()
 
   target_attr <- x %>%
-    select(contains("target")) %>%
-    gather(key = "key", value = "value",
+    select(contains("target"), !!group_col) %>%
+    gather(key = "key", value = "value", -group_col_name,
            -target_node_name, -target_nodeset_class, -target_nodeset_name)
   if("key" %in% colnames(target_attr)) {
     target_attr <-
@@ -139,6 +143,7 @@ as_adv_attr.adv_tbl <- function(x) {
       mutate(key = stringr::str_remove(key, "^target_")) %>%
       separate(key, into = c("attr_name", "col"), sep = "_attr_") %>%
       filter(col !="name") %>%
+      distinct() %>%
       spread(col, value) %>%
       rename(attr_type = type, attr_value = value)
   }
@@ -147,6 +152,7 @@ as_adv_attr.adv_tbl <- function(x) {
     select(nodeset_class = target_nodeset_class,
            nodeset_name = target_nodeset_name,
            node_name = target_node_name,
+           !!group_col,
            starts_with("attr")) %>%
     distinct()
 
