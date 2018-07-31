@@ -43,10 +43,10 @@ adv_tbl <- function(attributes, edges, directed = TRUE, group_col = NULL) {
   edges %>%
     left_join(source_attr, by = c("source_node_name", group_col_name)) %>%
     left_join(targ_attr, by = c("target_node_name", group_col_name)) %>%
-    set_adv_tbl_class() %>%
     select(source_nodeset_class, source_nodeset_name, source_node_name,
            target_nodeset_class, target_nodeset_name, target_node_name,
-           everything())
+           everything()) %>%
+    set_adv_tbl_class()
 }
 
 #' @rdname is_adv_tbl
