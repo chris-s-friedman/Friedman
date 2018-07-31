@@ -1,3 +1,7 @@
+# Friedman 0.5.1
+
+* Just bug fixes. Got the attr type to work
+
 # Friedman 0.5.0
 
 * adv_tbl funs and classes!
