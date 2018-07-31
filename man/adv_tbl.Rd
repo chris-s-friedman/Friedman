@@ -5,7 +5,7 @@
 \alias{is_adv_tbl}
 \title{Make Advanced Tables}
 \usage{
-adv_tbl(attributes, edges, directed = TRUE)
+adv_tbl(attributes, edges, directed = TRUE, group_col = NULL)
 }
 \arguments{
 \item{attributes}{A data frame with the atributes ceated by \code{\link{as_adv_attr()}}}
@@ -13,6 +13,8 @@ adv_tbl(attributes, edges, directed = TRUE)
 \item{edges}{A data frame with the edges ceated by \code{\link{as_adv_edge()}}}
 
 \item{directed}{Logical scalar - is the data directed (currently unused)}
+
+\item{group_col}{column to group the data by}
 }
 \value{
 an advanced table

@@ -4,7 +4,7 @@
 \alias{graph_from_adv_tbl}
 \title{Convert adv_data in an igraph object}
 \usage{
-graph_from_adv_tbl(adv_data)
+graph_from_adv_tbl(adv_data, directed = TRUE, ...)
 }
 \arguments{
 \item{adv_data}{adv_tbl data created by \code{\link{adv_tbl()}}}

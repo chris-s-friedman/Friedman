@@ -8,14 +8,17 @@
 \usage{
 as_adv_attr(x, ...)
 
-\method{as_adv_attr}{adv_tbl}(x)
+\method{as_adv_attr}{adv_tbl}(x, group_col = NULL)
 
-\method{as_adv_attr}{data.frame}(x, nodeset_class, nodeset_name, node_name)
+\method{as_adv_attr}{data.frame}(x, nodeset_class, nodeset_name, node_name,
+  group_col)
 }
 \arguments{
 \item{x}{object to coerce to advanced edge list}
 
 \item{...}{aditional arguments to pass on to methods}
+
+\item{group_col}{column that denotes grouping. Currently only 1 group is supported.}
 
 \item{nodeset_class}{column with the nodeset class}
 

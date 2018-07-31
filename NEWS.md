@@ -1,6 +1,8 @@
 # Friedman 0.5.1
 
 * Just bug fixes. Got the attr type to work
+* add_class function gives the ability to concatenate a class to an objects 
+classes
 
 # Friedman 0.5.0
 
