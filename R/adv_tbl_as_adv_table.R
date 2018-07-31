@@ -186,6 +186,8 @@ as_adv_attr.data.frame <- function(x, nodeset_class, nodeset_name, node_name,
   attr_types <-
     x %>%
     summarise_all(class) %>%
+    # only text types are supported. Doesn't seem to make much of a difference.
+    mutate_all(funs(as.character("text"))) %>%
     tidyr::gather(attr_name, attr_type)
   x %>%
     tidyr::gather(key = attr_name, value = attr_value,
