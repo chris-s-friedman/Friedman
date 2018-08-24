@@ -3,7 +3,6 @@
 \name{str_detect_approx}
 \alias{str_detect_approx}
 \alias{str_which_approx}
-\alias{str_which_approx}
 \alias{str_subset_approx}
 \title{Approximate string matching, stringr style}
 \usage{

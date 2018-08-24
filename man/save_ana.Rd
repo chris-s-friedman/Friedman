@@ -4,7 +4,8 @@
 \alias{save_ana}
 \title{Save Analytical Data}
 \usage{
-save_ana(x, file_name, file_types = c("csv", "spss", "sas", "stata", "r"))
+save_ana(x, file_name, file_types = c("csv", "spss", "sas", "stata",
+  "r"))
 }
 \arguments{
 \item{x}{data frame, tibble, some data}

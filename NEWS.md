@@ -1,3 +1,7 @@
+# Friedman 0.5.2
+
+* Adds Drexel color palettes and `scale_color_drexel()` and `scale_fill_drexel()` funs. In addition, utility functions `display_drexel_all()` and `display_drexel_pal()` added to visualize the palattes. 
+
 # Friedman 0.5.1
 
 * Just bug fixes. Got the attr type to work
