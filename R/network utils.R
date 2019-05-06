@@ -29,6 +29,8 @@ potential_ties.double <- function(n_nodes, directed = TRUE) {
   }
 }
 
+potential_ties.igraph <- function(graph)
+
 
 #'Turn an edge list into a matrix
 #'
