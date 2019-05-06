@@ -1,5 +1,16 @@
-#' Title
+#' Calculate the potential number of ties in a network
 #'
+#' @param x
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+potential_ties <- function(x, ...) {
+  UseMethod("potential_ties")
+}
+
 #' @param n_nodes
 #' @param directed
 #'
@@ -7,7 +18,7 @@
 #' @export
 #'
 #' @examples
-potential_ties <- function(n_nodes, directed = TRUE) {
+potential_ties.double <- function(n_nodes, directed = TRUE) {
   pt_directed <- (n_nodes*(n_nodes-1))
 
   if(directed) {
@@ -18,16 +29,21 @@ potential_ties <- function(n_nodes, directed = TRUE) {
   }
 }
 
-library(dplyr)
 
 #'Turn an edge list into a matrix
 #'
-#' @param el edge list to turn into a matrix
+#' @name edge_list_to_matrix
+#'
+#' @param el edge list to turn into a matrix. The edge list needs to be
+#' formatted such that
+#' \itemize{
+#'   \item the first column is named "source_name"
+#'   \item the second column is named "target_name"
+#'   \item the third column is named "link_value"
+#' }
 #'
 #' @return a matrix
 #' @export
-#'
-#' @examples
 #'
 #' @importFrom tidyr conplete spread
 #' @import dplyr
