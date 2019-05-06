@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param n_nodes
+#' @param directed
+#'
+#' @return
+#' @export
+#'
+#' @examples
 potential_ties <- function(n_nodes, directed = TRUE) {
   pt_directed <- (n_nodes*(n_nodes-1))
 
@@ -11,6 +20,17 @@ potential_ties <- function(n_nodes, directed = TRUE) {
 
 library(dplyr)
 
+#'Turn an edge list into a matrix
+#'
+#' @param el edge list to turn into a matrix
+#'
+#' @return a matrix
+#' @export
+#'
+#' @examples
+#'
+#' @importFrom tidyr conplete spread
+#' @import dplyr
 edge_list_to_matrix <- function(el) {
   el_cols <- colnames(el)
 
