@@ -4,8 +4,11 @@
 \alias{fuzzy_matcher}
 \title{Fuzzy string matching}
 \usage{
-fuzzy_matcher(comparand1, comparand2, distance.methods = c("lv",
-  "cosine", "jaccard", "jw"))
+fuzzy_matcher(
+  comparand1,
+  comparand2,
+  distance.methods = c("lv", "cosine", "jaccard", "jw")
+)
 }
 \arguments{
 \item{comparand1}{word or set of words to make a comparison with. Must be a 

@@ -25,6 +25,3 @@ columns about their attributes. Additionally, all of the nodes and attributes
 carry their own meta-data. This is a form that is made to make simple import
 into ORA.
 }
-\examples{
-
-}

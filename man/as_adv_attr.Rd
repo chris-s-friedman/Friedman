@@ -10,8 +10,7 @@ as_adv_attr(x, ...)
 
 \method{as_adv_attr}{adv_tbl}(x, group_col = NULL)
 
-\method{as_adv_attr}{data.frame}(x, nodeset_class, nodeset_name, node_name,
-  group_col)
+\method{as_adv_attr}{data.frame}(x, nodeset_class, nodeset_name, node_name, group_col)
 }
 \arguments{
 \item{x}{object to coerce to advanced edge list}

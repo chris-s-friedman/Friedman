@@ -4,9 +4,16 @@
 \alias{graph_from_adv_data}
 \title{Convert advanced format data into lists of edges and vertices}
 \usage{
-graph_from_adv_data(advanced_format_data, sourcenodesetname,
-  sourcenodename, targetnodesetname, targetnodename, network, frequency,
-  directed = TRUE)
+graph_from_adv_data(
+  advanced_format_data,
+  sourcenodesetname,
+  sourcenodename,
+  targetnodesetname,
+  targetnodename,
+  network,
+  frequency,
+  directed = TRUE
+)
 }
 \arguments{
 \item{advanced_format_data}{data in advanced file format. Should be a
@@ -39,9 +46,6 @@ Converts advanced format network data (a la ORA) into an igraph object
 }
 \examples{
 graph_from_adv_data(advanced_format_data)
-
-}
-\seealso{
 
 }
 \author{

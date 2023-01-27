@@ -19,9 +19,6 @@ Converts advanced format network data (a la ORA) into an igraph object
 graph_from_adv_tbl(adv_data)
 
 }
-\seealso{
-
-}
 \author{
 Chris Friedman, \email{chris.s.friedman@gmail.com}
 }
