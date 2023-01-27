@@ -4,8 +4,11 @@
 \alias{runnR}
 \title{You're doing something important}
 \usage{
-runnR(time = sample(100:500, size = 1), what = rep(letters, times = 2),
-  ran_time = TRUE)
+runnR(
+  time = sample(100:500, size = 1),
+  what = rep(letters, times = 2),
+  ran_time = TRUE
+)
 }
 \arguments{
 \item{time}{how long do you want the function to run?}
@@ -13,9 +16,6 @@ runnR(time = sample(100:500, size = 1), what = rep(letters, times = 2),
 \item{what}{What do you want the function to say is processing?}
 
 \item{ran_time}{Do you want the run time of the function to be random? I do!}
-}
-\value{
-
 }
 \description{
 Do you ever feel like you are getting enough done. In fact, you've gotten everything you wanted done, but you still have a few more hours at work. Well, use runnR to make that console busy!

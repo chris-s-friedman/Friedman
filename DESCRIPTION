@@ -8,6 +8,6 @@ Description: Contained are a series of functions that I find useful and that I r
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 7.2.3
 Imports: dplyr, tidyr, glue, purrr, readr, haven, igraph, progress, stringdist, 
-         tidyr
+         tidyr, reshape2
