@@ -1,0 +1,57 @@
+---
+title: "ISYE-6501: Week X Homework"
+output:
+  pdf_document: default
+sansfont: Calibri Light
+bibliography: references.bib
+csl: ieee-with-url.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  tidy = FALSE, 
+  attr.source = ".numberLines", 
+  out.width="75%",
+  fig.align = 'center'
+)
+library(knitr)
+```
+
+# Question x.x
+
+> How would you use this concept in your everyday life?
+
+## Background
+
+Explain the concept, its' main terms, and those terms applications
+
+## Concept use
+
+Explain your application of the concept in your life
+
+# question x.x
+
+> Heres a question where you'll write some code.
+
+## Background
+
+Explain the concept, its' main terms, and those terms applications
+
+## Your application of the concept
+
+Apply the concept to the problem at hand.
+
+Maybe you'll write some code and plot some plots. You may also reference R @R-base
+
+```{r code_example}
+library(dplyr)
+library(ggplot2)
+library(Friedman)
+as_tibble(iris) %>% 
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  scale_color_gatech("tertiary_web")
+```
